@@ -1,0 +1,35 @@
+cabal-version:       2.2
+
+name:                TextThumb
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/an-prata/TextThumb#readme
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Evan Overman
+maintainer:          evanrileyoverman@gmail.com
+copyright:           2024 Evan Overman
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+
+executable TextThumb
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  other-modules:       FileContent
+                     , Thumbnails
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , text == 2.1.1
+                     , JuicyPixels == 3.3.9
+                     , extra == 1.7.14
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-record-updates
+                       -Wincomplete-uni-patterns
+                       -Wmissing-export-lists
+                       -Wmissing-home-modules
+                       -Wpartial-fields
+                       -Wredundant-constraints

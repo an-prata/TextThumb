@@ -1,0 +1,13 @@
+resolver:
+  url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/22/18.yaml
+
+packages:
+- .
+
+extra-deps:
+- JuicyPixels-3.3.9
+- text-2.1.1
+- extra-1.7.14
+
+system-ghc: true
+install-ghc: false
