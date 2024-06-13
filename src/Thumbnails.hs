@@ -9,8 +9,11 @@ module Thumbnails
 
 import Codec.Picture
 
+-- | A file thumbnail, as represented by its size and a function which maps pixel locations to
+-- pixel colors.
 data Thumbnail p = Pixel p => Thumbnail Int Int (Int -> Int -> p)
 
+-- | Creates an @Image@ from the given @Thumbnail@.
 thumbnailImage :: Pixel p => Thumbnail p -> Image p
 thumbnailImage (Thumbnail w h f) = generateImage f w h
 

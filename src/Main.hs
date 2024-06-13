@@ -13,17 +13,18 @@ main = do
     case args of
        [inFile, outFile] -> do
             impression <- readImpression inFile
-            let thumb = createImpressionThumbnail impression
+            let background = PixelRGB8 255 255 255
+            let fill = PixelRGB8 94 96 96
+            let thumb = createImpressionThumbnail background fill impression
             writePng outFile thumb
+
        _ -> putStrLn "Bad args"
 
     return ()
 
-createImpressionThumbnail :: FileImpression -> Image PixelRGB8
-createImpressionThumbnail impression
-    = thumbnailImage $ margin blankPixel 4 . rowSpacing blankPixel 2 $ base
+createImpressionThumbnail :: Pixel p => p -> p -> FileImpression -> Image p
+createImpressionThumbnail background fill impression
+    = thumbnailImage $ margin background 4 . rowSpacing background 2 $ base
   where
     base = Thumbnail 144 164 (\x y
-        -> (if not (isSpaceAt impression y x) then fillPixel else blankPixel))
-    fillPixel = PixelRGB8 94 96 96
-    blankPixel = PixelRGB8 255 255 255
+        -> (if not (isSpaceAt impression y x) then fill else background))
